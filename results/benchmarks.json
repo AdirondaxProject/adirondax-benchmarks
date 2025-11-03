@@ -1,0 +1,51 @@
+{
+    "bench_inverse_problem.InverseProblemSuite.peakmem_forward_model": {
+        "code": "class InverseProblemSuite:\n    def peakmem_forward_model(self):\n        self.run_forward_model()\n\n    def setup(self):\n        file_path = os.path.join(os.path.dirname(__file__), \"target.png\")\n        target_data = img.imread(file_path)[:, :, 0]\n        self.rho_target = jnp.flipud(jnp.array(target_data, dtype=float))\n        self.rho_target = 1.0 - 0.5 * (self.rho_target - 0.5)\n        self.rho_target /= jnp.mean(self.rho_target)\n    \n        n = 128\n        nt = 100\n        t_stop = 0.03\n        dt = t_stop / nt\n        self.params = {\n            \"physics\": {\n                \"hydro\": False,\n                \"magnetic\": False,\n                \"quantum\": True,\n                \"gravity\": True,\n            },\n            \"mesh\": {\n                \"type\": \"cartesian\",\n                \"resolution\": [n, n],\n                \"boxsize\": [1.0, 1.0],\n            },\n            \"simulation\": {\n                \"stop_time\": t_stop,\n                \"timestep\": dt,\n                \"n_timestep\": nt,\n            },\n        }",
+        "name": "bench_inverse_problem.InverseProblemSuite.peakmem_forward_model",
+        "param_names": [],
+        "params": [],
+        "type": "peakmemory",
+        "unit": "bytes",
+        "version": "56f78d164c67380145bb784e206860cbf1a885e34104348622dbd79fdac13d18"
+    },
+    "bench_inverse_problem.InverseProblemSuite.peakmem_inverse_problem": {
+        "code": "class InverseProblemSuite:\n    def peakmem_inverse_problem(self):\n        self.solve_inverse_problem()\n\n    def setup(self):\n        file_path = os.path.join(os.path.dirname(__file__), \"target.png\")\n        target_data = img.imread(file_path)[:, :, 0]\n        self.rho_target = jnp.flipud(jnp.array(target_data, dtype=float))\n        self.rho_target = 1.0 - 0.5 * (self.rho_target - 0.5)\n        self.rho_target /= jnp.mean(self.rho_target)\n    \n        n = 128\n        nt = 100\n        t_stop = 0.03\n        dt = t_stop / nt\n        self.params = {\n            \"physics\": {\n                \"hydro\": False,\n                \"magnetic\": False,\n                \"quantum\": True,\n                \"gravity\": True,\n            },\n            \"mesh\": {\n                \"type\": \"cartesian\",\n                \"resolution\": [n, n],\n                \"boxsize\": [1.0, 1.0],\n            },\n            \"simulation\": {\n                \"stop_time\": t_stop,\n                \"timestep\": dt,\n                \"n_timestep\": nt,\n            },\n        }",
+        "name": "bench_inverse_problem.InverseProblemSuite.peakmem_inverse_problem",
+        "param_names": [],
+        "params": [],
+        "type": "peakmemory",
+        "unit": "bytes",
+        "version": "391d9335fc249b15278395d560eea7bdd70035ed676d6b74bfcdd5bb4752e37c"
+    },
+    "bench_inverse_problem.InverseProblemSuite.time_forward_model": {
+        "code": "class InverseProblemSuite:\n    def time_forward_model(self):\n        self.run_forward_model()\n\n    def setup(self):\n        file_path = os.path.join(os.path.dirname(__file__), \"target.png\")\n        target_data = img.imread(file_path)[:, :, 0]\n        self.rho_target = jnp.flipud(jnp.array(target_data, dtype=float))\n        self.rho_target = 1.0 - 0.5 * (self.rho_target - 0.5)\n        self.rho_target /= jnp.mean(self.rho_target)\n    \n        n = 128\n        nt = 100\n        t_stop = 0.03\n        dt = t_stop / nt\n        self.params = {\n            \"physics\": {\n                \"hydro\": False,\n                \"magnetic\": False,\n                \"quantum\": True,\n                \"gravity\": True,\n            },\n            \"mesh\": {\n                \"type\": \"cartesian\",\n                \"resolution\": [n, n],\n                \"boxsize\": [1.0, 1.0],\n            },\n            \"simulation\": {\n                \"stop_time\": t_stop,\n                \"timestep\": dt,\n                \"n_timestep\": nt,\n            },\n        }",
+        "min_run_count": 2,
+        "name": "bench_inverse_problem.InverseProblemSuite.time_forward_model",
+        "number": 0,
+        "param_names": [],
+        "params": [],
+        "repeat": 0,
+        "rounds": 2,
+        "sample_time": 0.01,
+        "type": "time",
+        "unit": "seconds",
+        "version": "7732a6513e04c91fd1fa9184f8f45952105277edf6e979bdc3491c7fc13b6a34",
+        "warmup_time": -1
+    },
+    "bench_inverse_problem.InverseProblemSuite.time_inverse_problem": {
+        "code": "class InverseProblemSuite:\n    def time_inverse_problem(self):\n        self.solve_inverse_problem()\n\n    def setup(self):\n        file_path = os.path.join(os.path.dirname(__file__), \"target.png\")\n        target_data = img.imread(file_path)[:, :, 0]\n        self.rho_target = jnp.flipud(jnp.array(target_data, dtype=float))\n        self.rho_target = 1.0 - 0.5 * (self.rho_target - 0.5)\n        self.rho_target /= jnp.mean(self.rho_target)\n    \n        n = 128\n        nt = 100\n        t_stop = 0.03\n        dt = t_stop / nt\n        self.params = {\n            \"physics\": {\n                \"hydro\": False,\n                \"magnetic\": False,\n                \"quantum\": True,\n                \"gravity\": True,\n            },\n            \"mesh\": {\n                \"type\": \"cartesian\",\n                \"resolution\": [n, n],\n                \"boxsize\": [1.0, 1.0],\n            },\n            \"simulation\": {\n                \"stop_time\": t_stop,\n                \"timestep\": dt,\n                \"n_timestep\": nt,\n            },\n        }",
+        "min_run_count": 2,
+        "name": "bench_inverse_problem.InverseProblemSuite.time_inverse_problem",
+        "number": 0,
+        "param_names": [],
+        "params": [],
+        "repeat": 0,
+        "rounds": 2,
+        "sample_time": 0.01,
+        "type": "time",
+        "unit": "seconds",
+        "version": "5ca2cd7e551033f3c7ce8d1645a26ea06decd248f50d7c86654bd0a9e47684f0",
+        "warmup_time": -1
+    },
+    "version": 2
+}
