@@ -47,5 +47,29 @@
         "version": "5ca2cd7e551033f3c7ce8d1645a26ea06decd248f50d7c86654bd0a9e47684f0",
         "warmup_time": -1
     },
+    "bench_mhd.MHDSuite.peakmem_run_sim": {
+        "code": "class MHDSuite:\n    def peakmem_run_sim(self):\n        self.run_sim()\n\n    def setup(self):\n        n = 512\n        nt = 10 * int(n / 32)\n        t_stop = 0.05\n        dt = t_stop / nt\n        gamma = 5.0 / 3.0\n        box_size = 1.0\n    \n        self.params = {\n            \"physics\": {\n                \"hydro\": True,\n                \"magnetic\": True,\n                \"quantum\": False,\n                \"gravity\": False,\n            },\n            \"mesh\": {\n                \"type\": \"cartesian\",\n                \"resolution\": [n, n],\n                \"boxsize\": [box_size, box_size],\n            },\n            \"simulation\": {\n                \"stop_time\": t_stop,\n                \"timestep\": dt,\n                \"n_timestep\": nt,\n            },\n            \"hydro\": {\n                \"eos\": {\"type\": \"ideal\", \"gamma\": gamma},\n            },\n        }",
+        "name": "bench_mhd.MHDSuite.peakmem_run_sim",
+        "param_names": [],
+        "params": [],
+        "type": "peakmemory",
+        "unit": "bytes",
+        "version": "686d9ed96bf4eae82ab6f148f92622cbd22632b4a63d86d2b031a8e7b8dae596"
+    },
+    "bench_mhd.MHDSuite.time_run_sim": {
+        "code": "class MHDSuite:\n    def time_run_sim(self):\n        self.run_sim()\n\n    def setup(self):\n        n = 512\n        nt = 10 * int(n / 32)\n        t_stop = 0.05\n        dt = t_stop / nt\n        gamma = 5.0 / 3.0\n        box_size = 1.0\n    \n        self.params = {\n            \"physics\": {\n                \"hydro\": True,\n                \"magnetic\": True,\n                \"quantum\": False,\n                \"gravity\": False,\n            },\n            \"mesh\": {\n                \"type\": \"cartesian\",\n                \"resolution\": [n, n],\n                \"boxsize\": [box_size, box_size],\n            },\n            \"simulation\": {\n                \"stop_time\": t_stop,\n                \"timestep\": dt,\n                \"n_timestep\": nt,\n            },\n            \"hydro\": {\n                \"eos\": {\"type\": \"ideal\", \"gamma\": gamma},\n            },\n        }",
+        "min_run_count": 2,
+        "name": "bench_mhd.MHDSuite.time_run_sim",
+        "number": 0,
+        "param_names": [],
+        "params": [],
+        "repeat": 0,
+        "rounds": 2,
+        "sample_time": 0.01,
+        "type": "time",
+        "unit": "seconds",
+        "version": "b5606b7e06129e2a47b7b9f5b04fe021512b5eb37e3a3593ff4380d97873d7d9",
+        "warmup_time": -1
+    },
     "version": 2
 }
