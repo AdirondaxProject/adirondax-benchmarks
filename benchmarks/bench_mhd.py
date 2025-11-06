@@ -14,8 +14,8 @@ class MHDSuite:
 
     def setup(self):
         n = 512
-        nt = 10 * int(n / 32)
-        t_stop = 0.05
+        nt = int(n / 16)
+        t_stop = 0.01
 
         self.params = {
             "physics": {
