@@ -16,35 +16,29 @@ class MHDSuite:
         n = 512
         nt = 10 * int(n / 32)
         t_stop = 0.05
-        dt = t_stop / nt
-        gamma = 5.0 / 3.0
-        box_size = 1.0
 
         self.params = {
             "physics": {
                 "hydro": True,
                 "magnetic": True,
-                "quantum": False,
-                "gravity": False,
             },
             "mesh": {
                 "type": "cartesian",
                 "resolution": [n, n],
-                "boxsize": [box_size, box_size],
+                "box_size": [1.0, 1.0],
             },
-            "simulation": {
-                "stop_time": t_stop,
-                "timestep": dt,
-                "n_timestep": nt,
+            "time": {
+                "span": t_stop,
+                "num_timesteps": nt,
             },
             "hydro": {
-                "eos": {"type": "ideal", "gamma": gamma},
+                "eos": {"type": "ideal", "gamma": 5.0 / 3.0},
             },
         }
 
     def run_sim(self):
         gamma = self.params["hydro"]["eos"]["gamma"]
-        box_size = self.params["mesh"]["boxsize"][0]
+        box_size = self.params["mesh"]["box_size"][0]
         n = self.params["mesh"]["resolution"][0]
         dx = box_size / n
         sim = adx.Simulation(self.params)

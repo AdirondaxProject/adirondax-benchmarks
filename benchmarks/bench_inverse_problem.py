@@ -24,23 +24,19 @@ class InverseProblemSuite:
         n = 128
         nt = 100
         t_stop = 0.03
-        dt = t_stop / nt
         self.params = {
             "physics": {
-                "hydro": False,
-                "magnetic": False,
                 "quantum": True,
                 "gravity": True,
             },
             "mesh": {
                 "type": "cartesian",
                 "resolution": [n, n],
-                "boxsize": [1.0, 1.0],
+                "box_size": [1.0, 1.0],
             },
-            "simulation": {
-                "stop_time": t_stop,
-                "timestep": dt,
-                "n_timestep": nt,
+            "time": {
+                "span": t_stop,
+                "num_timesteps": nt,
             },
         }
 
