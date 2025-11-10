@@ -48,16 +48,16 @@
         "warmup_time": -1
     },
     "bench_mhd.MHDSuite.peakmem_run_sim": {
-        "code": "class MHDSuite:\n    def peakmem_run_sim(self):\n        self.run_sim()\n\n    def setup(self):\n        n = 512\n        nt = int(n / 16)\n        t_stop = 0.01\n    \n        self.params = {\n            \"physics\": {\n                \"hydro\": True,\n                \"magnetic\": True,\n            },\n            \"mesh\": {\n                \"type\": \"cartesian\",\n                \"resolution\": [n, n],\n                \"box_size\": [1.0, 1.0],\n            },\n            \"time\": {\n                \"span\": t_stop,\n                \"num_timesteps\": nt,\n            },\n            \"hydro\": {\n                \"eos\": {\"type\": \"ideal\", \"gamma\": 5.0 / 3.0},\n            },\n        }",
+        "code": "class MHDSuite:\n    def peakmem_run_sim(self):\n        self.run_sim()\n\n    def setup(self):\n        n = 512\n        nt = int(n / 16)\n        t_stop = 0.01\n    \n        self.params = {\n            \"physics\": {\n                \"hydro\": True,\n                \"magnetic\": True,\n            },\n            \"mesh\": {\n                \"type\": \"cartesian\",\n                \"resolution\": [n, n],\n                \"box_size\": [1.0, 1.0],\n            },\n            \"time\": {\n                \"span\": t_stop,\n                \"num_timesteps\": nt,\n            },\n            \"hydro\": {\n                \"eos\": {\"type\": \"ideal\", \"gamma\": 5.0 / 3.0},\n                \"riemann_solver\": \"hlld\",\n                \"slope_limiting\": True,\n            },\n        }",
         "name": "bench_mhd.MHDSuite.peakmem_run_sim",
         "param_names": [],
         "params": [],
         "type": "peakmemory",
         "unit": "bytes",
-        "version": "1c07edacd265000e5c6f573bf1b5d0d95f463b1a90d3b3713f8efb6025bc5d30"
+        "version": "55cdfe053378b9df453c9a27ade236009955a6cdee1a0b337b16aa54f6345c81"
     },
     "bench_mhd.MHDSuite.time_run_sim": {
-        "code": "class MHDSuite:\n    def time_run_sim(self):\n        self.run_sim()\n\n    def setup(self):\n        n = 512\n        nt = int(n / 16)\n        t_stop = 0.01\n    \n        self.params = {\n            \"physics\": {\n                \"hydro\": True,\n                \"magnetic\": True,\n            },\n            \"mesh\": {\n                \"type\": \"cartesian\",\n                \"resolution\": [n, n],\n                \"box_size\": [1.0, 1.0],\n            },\n            \"time\": {\n                \"span\": t_stop,\n                \"num_timesteps\": nt,\n            },\n            \"hydro\": {\n                \"eos\": {\"type\": \"ideal\", \"gamma\": 5.0 / 3.0},\n            },\n        }",
+        "code": "class MHDSuite:\n    def time_run_sim(self):\n        self.run_sim()\n\n    def setup(self):\n        n = 512\n        nt = int(n / 16)\n        t_stop = 0.01\n    \n        self.params = {\n            \"physics\": {\n                \"hydro\": True,\n                \"magnetic\": True,\n            },\n            \"mesh\": {\n                \"type\": \"cartesian\",\n                \"resolution\": [n, n],\n                \"box_size\": [1.0, 1.0],\n            },\n            \"time\": {\n                \"span\": t_stop,\n                \"num_timesteps\": nt,\n            },\n            \"hydro\": {\n                \"eos\": {\"type\": \"ideal\", \"gamma\": 5.0 / 3.0},\n                \"riemann_solver\": \"hlld\",\n                \"slope_limiting\": True,\n            },\n        }",
         "min_run_count": 2,
         "name": "bench_mhd.MHDSuite.time_run_sim",
         "number": 0,
@@ -68,7 +68,7 @@
         "sample_time": 0.01,
         "type": "time",
         "unit": "seconds",
-        "version": "80af33c1faa9d7a26c493db3380b252d0bbc2c34ffaf0bd7d35e7f77ab978a1f",
+        "version": "66011741d0add602344eea1e13273caaa2f1095d4e4758f4e275074d740aceb2",
         "warmup_time": -1
     },
     "version": 2
